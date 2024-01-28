@@ -1,12 +1,12 @@
 import pandas as pd
-from sklearn.ensemble import gradient_boosting, ExtraTreesRegressor
-class Data_Getter_Pred:
+
+class Data_Getter:
 	"""
-	This class shall  be used for obtaining the data from the source for prediction.
+	This class shall  be used for obtaining the data from the source for training.
 	"""
 
 	def __init__(self, file_object, logger_object):
-		self.prediction_file = 'Prediction_FileFromDB/InputFile.csv'
+		self.training_file = 'Training_FileFromDB/InputFile.csv'
 		self.file_object = file_object
 		self.logger_object = logger_object
 
@@ -16,9 +16,10 @@ class Data_Getter_Pred:
 		:return: A pandas DataFrame.
 		On Failure: Raise Exception
 		"""
+
 		self.logger_object.log(self.file_object, 'Entered the get_data method of the Data_Getter class')
 		try:
-			self.data = pd.read_csv(self.prediction_file)  # reading the data file
+			self.data = pd.read_csv(self.training_file)  # reading the data file
 			self.logger_object.log(self.file_object,
 			                       'Data Load Successful.Exited the get_data method of the Data_Getter class')
 			return self.data
