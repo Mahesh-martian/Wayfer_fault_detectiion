@@ -19,7 +19,7 @@ class dataTransformPredict:
        keep only "Integer" data for ease up the loading.
        This column is anyways going to be removed during prediction.
 
-		:return:
+		:return:None
 		"""
 
 		try:
