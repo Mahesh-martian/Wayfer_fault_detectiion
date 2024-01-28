@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.104.2">
+    <title>Wafer fault detection</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/headers/">
+    <link href="bootstrap.min.css" rel="stylesheet">
+
+
+    <style>
+      body{
+        background-image: url ("C:\Users\Admin\Downloads\wafer_microscopic_view.jpg")
+      }
+
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="headers.css" rel="stylesheet">
+  </head>
+    <body background="D:\pexels-alexander-kovalev-2847648.jpg">
+      <div class="container">
+        <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+          <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
+          </a>
+            <div>
+                <div class="container-fluid" >
+                    <div >
+                        <h1 style="color:white;" >Wafer Fault detection</h1>
+                    </div>
+
+		        </div>
+            </div>
+          <div class="col-md-3 text-end">
+          </div>
+        </header>
+      </div>
+
+      <div class="container-fluid pb-3">
+        <div class="d-grid gap-3" style="grid-template-columns: 1fr 2fr;">
+          <div class="bg-light border rounded-3">
+              <form method="post" id="datafetch_form" enctype="multipart/form-data">
+                  <div class="form-group files color">
+                    <input type="text" name = "csvfile" id="csvfile" class="form-control" placeholder="Enter absolute file path." required >
+                  </div>
+                  <div class=""><button class="form-control btn btn-primary" id="customfile">Custom File Predict</button></div>
+                  <br/><center><b>Or</b></center><br/>
+                  <button class="form-control btn btn-primary mb-5" id="defaultfile" data-path = "Prediction_Batch_files">Default File Predict</button>
+              </form>
+          </div>
+          <div class="bg-light border rounded-3">
+              <div class="res-container  col-md-6 col-xs-12">
+					<div class="result-box shadow rounded-lg">
+						<center><h6 class="title">Results</h6></center>
+						<div class="json-result">
+						</div>
+					</div>
+              </div>
+          </div>
+        </div>
+         <h5 align="center" style="color:white;"> <b>Detecting defective wafers manually</b></h5>
+      <div align="center" >
+          <img src="D:\gettyimages-1363604180-612x612.jpg" height="270">
+          <img src="D:\gettyimages-162266798-612x612.jpg" height="270">
+          <img src="D:\gettyimages-1363604154-612x612.jpg" height="270">
+      </div>
+      </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+      <script>
+		$(document).ready(function(){
+			$('#loading').hide();
+			$("#customfile").click(function(e){
+				e.preventDefault();
+				$('#loading').show();
+				var path = $("#csvfile").val();
+				$.ajax({
+					//change url below
+					url : "/predict",
+					type: "POST",
+					data: {filepath:path},
+					success: function(response){
+						$(".json-result").html('<p>"Prediction File created at !!!Prediction_Output_File/Predictions.csvand few of the predictions are"</p><pre>' + response + '</pre>');
+						$('#loading').hide();
+					}
+				});
+			});
+			$("#defaultfile").click(function(e){
+				e.preventDefault();
+				$('#loading').show();
+				var path = $(this).attr("data-path");
+				$.ajax({
+					//change url below
+					url : "/predict",
+					type: "POST",
+					data: {filepath:path},
+					success: function(response){
+						$(".json-result").html('<p>"Prediction File created !!!</p><pre>' + response + '</pre>');
+						$('#loading').hide();
+					}
+				});
+
+			});
+		});
+	</script>
+
+    </body>
+</html>
