@@ -59,3 +59,7 @@ class train_validation:
         except Exception as e:
             raise e
 
+if __name__ == "__main__":
+    path = "Training_Batch_Files"
+    train_valObj = train_validation(path)
+    train_valObj.train_validation()

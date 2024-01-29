@@ -8,9 +8,9 @@
     <meta name="generator" content="Hugo 0.104.2">
     <title>Wafer fault detection</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/headers/">
-    <link href="bootstrap.min.css" rel="stylesheet">
-
+<!--    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/headers/">-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" >
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/headers.css') }}" >
 
     <style>
       body{
@@ -70,9 +70,11 @@
     </style>
 
     <!-- Custom styles for this template -->
-    <link href="headers.css" rel="stylesheet">
+
   </head>
-    <body background="D:\pexels-alexander-kovalev-2847648.jpg">
+<!--    <body background="D:\pexels-alexander-kovalev-2847648.jpg">-->
+    <body style="background-image: url('{{ url_for('static', filename='css/pexels-alexander-kovalev-2847648.jpg') }}'); background-size: cover;">
+
       <div class="container">
         <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
           <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
@@ -114,8 +116,7 @@
             </div>
           </div>
 <!--        </div>-->
-
-          <div class="bg-light border rounded-3">
+            <div class="bg-light border rounded-3">
               <div class="res-container  col-md-6 col-xs-12">
 					<div class="result-box shadow rounded-lg">
 						<center><h6 class="title">Results</h6></center>
@@ -127,15 +128,15 @@
 
          <h5 align="center" style="color:white;"> <b>Detecting defective wafers manually</b></h5>
       <div align="center" >
-          <img src="D:\gettyimages-1363604180-612x612.jpg" height="270">
-          <img src="D:\gettyimages-162266798-612x612.jpg" height="270">
-          <img src="D:\gettyimages-1363604154-612x612.jpg" height="270">
-      </div>
+          <img src="{{ url_for('static', filename='css/img2.jpg') }}" height="270">
+          <img src="{{ url_for('static', filename='css/img1.jpg') }}" height="270">
+          <img src="{{ url_for('static', filename='css/img3.jpg') }}" height="270">
       </div>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-      <script>
+
+    <script>
 		$(document).ready(function(){
 			$('#loading').hide();
 			$("#customfile").click(function(e){
@@ -148,7 +149,7 @@
 					type: "POST",
 					data: {filepath:path},
 					success: function(response){
-						$(".json-result").html('<p>"Prediction File created at !!!Prediction_Output_File/Predictions.csvand few of the predictions are"</p><pre>' + response + '</pre>');
+						$(".json-result").html('<h5>Prediction File created at <b>Prediction_Output_File/Predictions.csv</b> and few of the predictions are"</h5><pre>' + response + '</pre>');
 						$('#loading').hide();
 					}
 				});
@@ -163,7 +164,7 @@
 					type: "POST",
 					data: {filepath:path},
 					success: function(response){
-						$(".json-result").html('<p>"Prediction File created !!!</p><pre>' + response + '</pre>');
+						$(".json-result").html('<h2>Prediction File created </h2><pre>' + response + '</pre>');
 						$('#loading').hide();
 					}
 				});
@@ -171,6 +172,7 @@
 			});
 		});
 	</script>
+
 
     </body>
 </html>

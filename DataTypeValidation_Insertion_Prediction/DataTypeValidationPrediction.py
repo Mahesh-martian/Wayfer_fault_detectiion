@@ -128,45 +128,45 @@ class dBOperation:
 		conn.close()
 		log_file.close()
 
-		def selectingDatafromtableintocsv(self, Database):
-			"""
-			This method exports the data in GoodData table as a CSV file. in a given location.
-            above created .
+	def selectingDatafromtableintocsv(self, Database):
+		"""
+		This method exports the data in GoodData table as a CSV file. in a given location.
+        above created .
 
-			:param self:
-			:param Database:
-			:return:None
-			"""
+		:param self:
+		:param Database:
+		:return:None
+		"""
 
-			self.fileFromDb = 'Prediction_FileFromDB/'
-			self.fileName = 'InputFile.csv'
-			log_file = open("Prediction_Logs/ExportToCsv.txt", 'a+')
-			try:
-				conn = self.dataBaseConnection(Database)
-				sqlSelect = "SELECT *  FROM Good_Raw_Data"
-				cursor = conn.cursor()
+		self.fileFromDb = 'Prediction_FileFromDB/'
+		self.fileName = 'InputFile.csv'
+		log_file = open("Prediction_Logs/ExportToCsv.txt", 'a+')
+		try:
+			conn = self.dataBaseConnection(Database)
+			sqlSelect = "SELECT *  FROM Good_Raw_Data"
+			cursor = conn.cursor()
 
-				cursor.execute(sqlSelect)
+			cursor.execute(sqlSelect)
 
-				results = cursor.fetchall()
+			results = cursor.fetchall()
 
-				# Get the headers of the csv file
-				headers = [i[0] for i in cursor.description]
+			# Get the headers of the csv file
+			headers = [i[0] for i in cursor.description]
 
-				# Make the CSV ouput directory
-				if not os.path.isdir(self.fileFromDb):
-					os.makedirs(self.fileFromDb)
+			# Make the CSV ouput directory
+			if not os.path.isdir(self.fileFromDb):
+				os.makedirs(self.fileFromDb)
 
-				# Open CSV file for writing.
-				csvFile = csv.writer(open(self.fileFromDb + self.fileName, 'w', newline=''), delimiter=',',
-				                     lineterminator='\r\n', quoting=csv.QUOTE_ALL, escapechar='\\')
+			# Open CSV file for writing.
+			csvFile = csv.writer(open(self.fileFromDb + self.fileName, 'w', newline=''), delimiter=',',
+			                     lineterminator='\r\n', quoting=csv.QUOTE_ALL, escapechar='\\')
 
-				# Add the headers and data to the CSV file.
-				csvFile.writerow(headers)
-				csvFile.writerows(results)
+			# Add the headers and data to the CSV file.
+			csvFile.writerow(headers)
+			csvFile.writerows(results)
 
-				self.logger.log(log_file, "File exported successfully!!!")
+			self.logger.log(log_file, "File exported successfully!!!")
 
-			except Exception as e:
-				self.logger.log(log_file, "File exporting failed. Error : %s" % e)
-				raise e
+		except Exception as e:
+			self.logger.log(log_file, "File exporting failed. Error : %s" % e)
+			raise e

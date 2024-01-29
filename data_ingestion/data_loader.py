@@ -8,7 +8,8 @@ class Data_Getter:
 	def __init__(self, file_object, logger_object):
 		self.training_file = 'Training_FileFromDB/InputFile.csv'
 		self.file_object = file_object
-		self.logger_object = logger_object
+		self.object = logger_object
+		self.logger_object = self.object
 
 	def get_data(self):
 		"""

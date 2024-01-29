@@ -1,5 +1,5 @@
 from wsgiref import simple_server
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 from flask import Response
 import os
 from flask_cors import CORS, cross_origin
@@ -38,7 +38,8 @@ def predictRouteClient():
 
             # predicting for dataset present in database
             path,json_predictions = pred.predictionFromModel()
-            return Response("Prediction File created at !!!"  +str(path) +'and few of the predictions are '+str(json.loads(json_predictions) ))
+
+            return Response(" Prediction File created at "  +str(path) +'and few of the predictions are '+str(json.loads(json_predictions) ))
         elif request.form is not None:
             path = request.form['filepath']
 
@@ -50,7 +51,10 @@ def predictRouteClient():
 
             # predicting for dataset present in database
             path,json_predictions = pred.predictionFromModel()
-            return Response("Prediction File created at !!!"  +str(path) +'and few of the predictions are '+str(json.loads(json_predictions) ))
+
+            return Response("Prediction File created at " + str(path) + 'and Few of the predictions are \n' + str(
+                json.loads(json_predictions)))
+
         else:
             print('Nothing Matched')
     except ValueError:
