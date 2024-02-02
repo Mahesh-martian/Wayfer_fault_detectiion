@@ -1,6 +1,6 @@
 # Wafer Fault Detection
 
-    ![1706764708803](image/README/1706764708803.png)
+![1706764708803](image/README/1706764708803.png)
  
 ---
 
@@ -43,7 +43,7 @@
 
 ## Folder Structure
 
- |-- WaferFaultDetection_new/
+    |-- WaferFaultDetection_new/
     |-- application_logging/
         |-- logger.py
     |-- best_model_finder/
@@ -55,7 +55,7 @@
         |-- clustering.py
         |-- preprocessing.py
     |-- file_operations/
-        |--__init__.py
+        |-- __init__.py
         |-- file_methods.py
     |-- models/
         |-- [Model files go here]
