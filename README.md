@@ -1,10 +1,10 @@
-
 # Wafer Fault Detection
 
+    ![1706764708803](image/README/1706764708803.png)
+ 
+---
 
-
-
-<img src="https://www.researchgate.net/publication/358764401/figure/fig1/AS:1127387928506381@1645801636622/Example-of-wafer-map.png" width="200" height="200">## About
+## About
 
 ### An end-to-end machine learning project for detecting faults in wafer sensor
 
@@ -12,24 +12,25 @@
 
 ## Business Problem
 
->Manufacturing of wafer involves many steps. At the end of the process, the wafer is tested for any faults. If the wafer fails any test, The entire production has to be stopped and manual inspection is required to find the faulty wafer. The Faulty wafer is then sent to the rework process. The rework process is very expensive and time consuming. So, it is very important to detect the faults in the wafer before sending it to the rework process. If there is some way to identify faulty wafers, quickly and effectively; it would increase the efficiency and profit of the business.  
+> Manufacturing of wafer involves many steps. At the end of the process, the wafer is tested for any faults. If the wafer fails any test, The entire production has to be stopped and manual inspection is required to find the faulty wafer. The Faulty wafer is then sent to the rework process. The rework process is very expensive and time consuming. So, it is very important to detect the faults in the wafer before sending it to the rework process. If there is some way to identify faulty wafers, quickly and effectively; it would increase the efficiency and profit of the business.
 
 ## Modelling a data science problem
 
+---
+
 ### 1. Problem Definition
 
->The inputs of various sensors for different wafers have been provided. The task is to build a machine learning model that can predict whether the wafer is faulty or not and thus identify the wafers that need to be sent to the rework process. The end user require a web interface from which they could upload the sensor data and get the predictions. End user is not responsible for maintaining or retraining of the model.
+> The inputs of various sensors for different wafers have been provided. The task is to build a machine learning model that can predict whether the wafer is faulty or not and thus identify the wafers that need to be sent to the rework process. The end user require a web interface from which they could upload the sensor data and get the predictions. End user is not responsible for maintaining or retraining of the model.
 
 ### 2. Data
 
->The data is obtained as batches to a fixed location. The data contains the Wafer names and different sensor values for each wafer. The last column will have `-1 or 1` values. The `-1` values indicate that the wafer is not defective and the `1` values indicate that the wafer is defective. Apart from this data, the client would also provide the schema which contain information like **Name of the files, Length of Date value in FileName, Length of Time value in FileName, Number of Columns, Name of the Columns, and their datatype.**
+> The data is obtained as batches to a fixed location. The data contains the Wafer names and different sensor values for each wafer. The last column will have `-1 or 1` values. The `-1` values indicate that the wafer is not defective and the `1` values indicate that the wafer is defective. Apart from this data, the client would also provide the schema which contain information like **Name of the files, Length of Date value in FileName, Length of Time value in FileName, Number of Columns, Name of the Columns, and their datatype.**
 
 **The dataset is obtained from [zenodo](https://zenodo.org/record/4322353#.Y7K4y3ZBytU).**
 
 ### 3. Solution
 
->The solution is to build a machine learning model that can predict whether the wafer is faulty or not and thus identify the wafers that need to be sent to the rework process. The model will be deployed on a web application.
-
+> The solution is to build a machine learning model that can predict whether the wafer is faulty or not and thus identify the wafers that need to be sent to the rework process. The model will be deployed on a web application.
 
 ## key Features
 
@@ -37,19 +38,12 @@
 * __Machine Learning Models:__ Implementation of various machine learning models for classification tasks.
 * __Model Evaluation:__ Rigorous evaluation of model performance using relevant metrics.
 * __Interactive Web Interface:__ Integration with an interactive web interface for easy interaction and predictions.
-## Installation
 
-Install my-project with git
+---
 
-```bash
-  git clone https://github.com/Mahesh-martian/Wayfer_fault_detectiion.git
+## Folder Structure
 
-  cd wafer-fault-detection
-  
-  pip install -r requiremenrs.txt
-  
-```
-    |-- WaferFaultDetection_new/
+ |-- WaferFaultDetection_new/
     |-- application_logging/
         |-- logger.py
     |-- best_model_finder/
@@ -61,7 +55,7 @@ Install my-project with git
         |-- clustering.py
         |-- preprocessing.py
     |-- file_operations/
-        |-- __init__.py
+        |--__init__.py
         |-- file_methods.py
     |-- models/
         |-- [Model files go here]
@@ -212,12 +206,42 @@ Install my-project with git
     |-- test.py
     |-- trainingModel.py
     |-- training_Validation_Insertion.py
-<img src="./Readme_Assets/Arch.png" width="700" height="600">
 
+### Architecture
 
-## Acknowledgements
+![1706765162567](image/README/1706765162567.png)
 
- - [Awesome Readme Templates](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
- - [Awesome README](https://github.com/matiassingers/awesome-readme)
- - [How to write a Good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
+### Installation
 
+Install my-project with git
+
+```bash
+  git clone https://github.com/Mahesh-martian/Wayfer_fault_detectiion.git
+
+  cd wafer-fault-detection
+  
+  pip install -r requiremenrs.txt
+  
+```
+
+## Run the application
+
+`python main.py`
+
+open any browser and enter the url
+
+```
+http://127.0.0.1:5000
+```
+
+## Contributing
+
+If you'd like to contribute to the project, please follow our contributing guidelines
+
+## Author
+
+Mahesh Kumar R
+
+LinkedIn Profile - [LinkedIn Profile](https://www.linkedin.com/in/mahesh-kumar-r/)
+
+For detailed Project Explaination video -[click here ](https://youtu.be/hXVvsEaUsBw)
